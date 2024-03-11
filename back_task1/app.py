@@ -25,7 +25,6 @@ def connect_db():
 
 
 def create_db():
- #   '''�������� ��'''
     db = connect_db()
     sql = '''CREATE TABLE IF NOT EXISTS Messages(
             text TEXT NOT NULL,
@@ -37,7 +36,6 @@ def create_db():
 
 
 def get_db():
- #   '''���������� � ��, ���� ��� ��� �� �����������'''
     if not hasattr(g, 'link_db'):
         g.link_db = connect_db()
     return g.link_db
@@ -59,7 +57,6 @@ def getMessages():
 
 @app.teardown_appcontext
 def close_db(error):
- #   '''��������� ���������� � ��, ���� ��� ����������'''
     if hasattr(g, 'link_db'):
         g.link_db.close()
         
