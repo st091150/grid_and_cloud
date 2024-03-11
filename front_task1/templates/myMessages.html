@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{super()}}
+<div>
+    {% for i, j in messages -%}
+    <div style="border: 2px #FDA83D solid; padding: 0 0 10px 0; word-wrap: break-word; ">
+        <h3>TIME: &emsp;{{j}}</h3>
+        <h3>TEXT:<br />&emsp;{{i}}</h3>
+    </div>
+    {% endfor -%}
+</div>
+{% endblock %}
