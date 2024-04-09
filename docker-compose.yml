@@ -2,14 +2,26 @@ version: '3.4'
 
 services:
   frontend:
-    build: .\front_task1
+    build: ./front_task1
     container_name: frontend
     depends_on: [backend]
     ports: 
       - "5000:5000"
+    networks:
+      - net
+
+
+
   backend:
     build: ./back_task1
     container_name: backend
-    ports:
-        - "5002:5002"
-  
+    volumes:
+      - ./back_task1:/app
+    ports: 
+      - "5002:5000"
+    networks:
+      - net
+
+
+networks:
+  net:
