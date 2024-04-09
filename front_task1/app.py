@@ -12,7 +12,7 @@ menu = [{"name" : 'Send a message', "url": "/"},
 @app.route('/', methods=["POST", "GET"])
 def hello():
     if request.method == 'POST':
-        res = requests.post('http://host.docker.internal:5002/addMessage', data={'message': f"{request.form['message']}"})
+        res = requests.post('http://backend:5002/addMessage', data={'message': f"{request.form['message']}"})
         if res.ok:
             flash('success', category="success")
         else:
@@ -23,7 +23,7 @@ def hello():
 @app.route('/messages', methods=["POST", "GET"])
 def messages():
     if request.method == 'GET':
-        res = requests.get('http://host.docker.internal:5002/getMessages')
+        res = requests.get('http://backend:5002/getMessages')
     return render_template('myMessages.html', title='Messages', menu=menu, messages=res.json() if res.ok else [('Error', 'Error')])
 
 if __name__ == '__main__':
